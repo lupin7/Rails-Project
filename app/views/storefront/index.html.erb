@@ -1,0 +1,19 @@
+<main>
+	<header></header>
+	<% @categories.each do |category| %>
+		<% unless category.products.count.zero? %>
+		<section class="sectioned_category">
+			<h2><%= category.name %></h2>
+			<%= render partial: 'products/product',
+					   collection: category.products,
+					   locals: { display_link_to_show: true, 
+					   			 display_link_to_edit: false } %>
+		</section>
+		<% end %>
+	<% end %>
+	<footer>
+		<small><%= link_to 'About Us', about_path %> | <%= link_to 'Contact Us', contact_path %></small>
+		<br/>
+		<small>Copyrights <%= Time.now.year %> </small>
+	</footer>
+</main>

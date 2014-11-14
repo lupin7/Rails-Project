@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @account.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @account.last_name %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @account.username %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @account.password %>
+</p>
+
+<p>
+  <strong>Secret question:</strong>
+  <%= @account.secret_question %>
+</p>
+
+<p>
+  <strong>Secret answer:</strong>
+  <%= @account.secret_answer %>
+</p>
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>

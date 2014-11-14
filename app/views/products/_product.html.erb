@@ -1,0 +1,35 @@
+<div class="product_front">
+  
+  <% if product.image_filename.present? %>
+    <%= image_tag product.image_filename %>
+  <% end %>
+  
+  <h3>
+    <% if display_link_to_show %>
+      <%= link_to product.name, product %>
+    <% else %>
+      <%= product.name %>
+    <% end %>
+  </h3>
+  
+  <p>
+    <%= product.description.truncate(100) %>
+  </p>
+
+  <% if product.stock_quantity.zero? %>
+    <small>Out of Stock </small>
+  <% else %>
+    <small>
+      Stock Quantity: <%= product.stock_quantity %>
+    </small>
+  <% end %>
+  
+  <p class="price">
+    <strong>Price:</strong>
+    <%= number_to_currency(product.price) %>
+  </p>
+
+  <% if display_link_to_edit %>
+    <p><%= link_to 'Edit', edit_product_path(product) %></p>
+  <% end %>
+</div>

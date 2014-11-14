@@ -1,0 +1,35 @@
+<h1>Listing accounts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Secret question</th>
+      <th>Secret answer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.first_name %></td>
+        <td><%= account.last_name %></td>
+        <td><%= account.username %></td>
+        <td><%= account.password %></td>
+        <td><%= account.secret_question %></td>
+        <td><%= account.secret_answer %></td>
+        <td><%= link_to 'Show', account %></td>
+        <td><%= link_to 'Edit', edit_account_path(account) %></td>
+        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Account', new_account_path %>
