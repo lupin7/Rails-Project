@@ -1,5 +1,6 @@
+<header><%= render 'shared/header' %></header>
 <main>
-	<header></header>
+	<%= render 'shared/navigate' %>
 	<% @categories.each do |category| %>
 		<% unless category.products.count.zero? %>
 		<section class="sectioned_category">
@@ -11,9 +12,5 @@
 		</section>
 		<% end %>
 	<% end %>
-	<footer>
-		<small><%= link_to 'About Us', about_path %> | <%= link_to 'Contact Us', contact_path %></small>
-		<br/>
-		<small>Copyrights <%= Time.now.year %> </small>
-	</footer>
 </main>
+<%= render 'shared/footer' %>

@@ -1,12 +1,12 @@
 class ProductsController < ApplicationController
-  before_action :admin_authenticate
+  before_action :admin_authenticate, only: [:show, :edit, :update, :destroy]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_categories, only: [:new, :edit]
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.all#.order("name").page(params[:page]).per(5)
   end
 
   # GET /products/1

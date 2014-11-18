@@ -1,0 +1,9 @@
+<div id = "navigate">
+  <nav>
+	<ul>
+      <% @categorize.each do |category| %>
+	    <li><%= link_to category.name, show_all_path %></li>
+	  <% end %>
+	</ul>
+  </nav>
+</div>

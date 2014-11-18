@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+* {
+	//width: 900px;
+	//margin: 0px;
+	margin: 0px auto;
+}
+
+main {
+	width: 900px;
+	margin: 0px auto;
+	padding: 10px 0px;
+}
+
 .index_pics {
 	// border: 1px solid grey;
 	// margin: 10px;
@@ -13,4 +25,14 @@
 
 .align_right{
 	text-align: right;
+}
+.center_align {
+	text-align: center;
+}
+
+input, textarea, select { 
+	width: 250px;
+}
+textarea {
+	height: 200px;
 }

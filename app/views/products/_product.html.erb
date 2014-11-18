@@ -6,7 +6,7 @@
   
   <h3>
     <% if display_link_to_show %>
-      <%= link_to product.name, product %>
+      <%= link_to product.name, show_path(product) %>
     <% else %>
       <%= product.name %>
     <% end %>
@@ -26,8 +26,11 @@
   
   <p class="price">
     <strong>Price:</strong>
-    <%= number_to_currency(product.price) %>
+    $<%= product.price %>
   </p>
+
+  <input type="text" id="quantity" name="quantity" /> 
+  <button type="button">Buy</button>
 
   <% if display_link_to_edit %>
     <p><%= link_to 'Edit', edit_product_path(product) %></p>

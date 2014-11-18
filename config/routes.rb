@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   resources :categories
 
   resources :accounts
@@ -11,6 +14,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root to: 'storefront#index'
+
+  get '/storefront/:id' => 'storefront#show', as: 'show'
+  get 'all' => 'storefront#show_all', as: 'show_all'
+  
+  get '/storefront/categorized/:id' => 'storefront#show_by_category', as: 'show_by_category'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
