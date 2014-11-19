@@ -2,13 +2,13 @@
 <main>
 	<%= render 'shared/navigate' %>
 
-		<%= render partial: 'products/product',
-					   collection: @products,
-					   locals: { display_link_to_show: true, 
-					   			 display_link_to_edit: false } %>
-		
+	<%= render partial: 'products/product',
+				   collection: @products,
+				   locals: { display_link_to_show: true, 
+				   			 display_link_to_edit: false } %>
+	
 
-		<%= paginate @products %>
+	<%= paginate @products %>
 		
 </main>
 <%= render 'shared/footer' %>

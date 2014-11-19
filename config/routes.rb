@@ -17,7 +17,10 @@ Rails.application.routes.draw do
 
   get '/storefront/:id' => 'storefront#show', as: 'show'
   get 'all' => 'storefront#show_all', as: 'show_all'
-  
+
+  get 'search' => 'storefront#search', as: 'search'
+  get 'search_results' => 'storefront#search_results', as: 'search_results'
+
   get '/storefront/categorized/:id' => 'storefront#show_by_category', as: 'show_by_category'
   
   # Example of regular route:

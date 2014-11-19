@@ -16,9 +16,30 @@ class StorefrontController < ApplicationController
     @products = Product.page(params[:page]).per(3)
   end
 
-  def show_by_category
-    @category = Category.where(params[:id])
+  def search      
+    # @items = Product.find(:all,
+    # :conditions => ["name LIKE ?",
+    # "%#{params[:search]}%"])
+  end  
+
+  def search_results    
+    search = '%' + params[:search] + "%"
+    @found_products = Product.where("name LIKE ? OR description LIKE ?",
+                                     search, search)
+    # @found_products = Product.search_for(params[:search])
   end
+
+  def search_for
+  end
+
+  # def show_by_category
+  #   @category = Category.where(params[:id])
+  # end
+
+
+# @items = Product.find(:all,
+#     :conditions => ["name LIKE ?",
+#     "%#{params[:search]}%"])
 
   # def _navigate
   #   @categories = Category.order(:name)

@@ -1,0 +1,15 @@
+<header><%= render 'shared/header' %></header>
+<main id="search">
+	<%= render 'shared/navigate' %>
+	<br />
+	<h2>Search bar</h2>
+	<br />
+	<%= form_tag search_results_path, :method => 'get', :class => 'form-inline' do %>
+
+	  <%= text_field_tag :search, params[:search], :class => 'searchtext' %>
+	  <%= submit_tag "Search", :class => 'searchbutton' %>
+
+	<% end %>
+</main>
+
+<%= render 'shared/footer' %>

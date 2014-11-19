@@ -1,0 +1,18 @@
+<header><%= render 'shared/header' %></header>
+<main>
+	<%= render 'shared/navigate' %>
+	<br />
+	<h2> Search Results for '<%= params[:search] %>' </h2>
+	<br />
+	<% if @found_products.empty? %>
+	  <p> No Results Found </p>
+	<% end %>
+
+	<%= render partial: 'products/product',
+			   collection: @found_products,
+			   locals: { display_link_to_show: true, 
+			   			 display_link_to_edit: false } %>
+
+</main>
+
+<%= render 'shared/footer' %>
