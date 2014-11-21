@@ -1,0 +1,5 @@
+div#navigate
+  nav
+    ul
+      - @categorize.each do |category|
+        li == link_to category.name, show_by_category_path(category)

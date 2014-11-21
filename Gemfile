@@ -38,6 +38,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
+# Added gems
 gem "figaro", "~> 1.0"
 
 gem 'activeadmin', github: 'activeadmin'
@@ -46,3 +47,9 @@ gem 'devise'
 gem 'carrierwave'
 
 gem 'kaminari'
+
+gem 'slim-rails'
+
+# gem 'sass', '~> 3.4.8'
+
+gem 'rubocop', '~> 0.27.1'

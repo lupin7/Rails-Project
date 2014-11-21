@@ -1,12 +1,11 @@
 class StorefrontController < ApplicationController
   before_action :set_product, only: [:show]
+  # before_action :set_category
   before_action :set_all_categories
   before_action :set_all_products  
 
   def index
   	@categories = Category.order(:name).limit(3)
-  	# @products = Product.limit(3)
-    # @categorize = Category.order(:name)
   end
 
   def show
@@ -29,25 +28,21 @@ class StorefrontController < ApplicationController
     # @found_products = Product.search_for(params[:search])
   end
 
-  def search_for
+  def search_by_category
+  end  
+
+  def search_results_by_category
+    # category = '%' + params[:category_chosen] + '%'
+    category = params[:category_chosen]
+    search = '%' + params[:search] + "%"
+    @found_products = Product.where("category_id=#{category} AND
+                                     name LIKE ? OR description LIKE ?",
+                                     search, search)
   end
 
-  # def show_by_category
-  #   @category = Category.where(params[:id])
-  # end
-
-
-# @items = Product.find(:all,
-#     :conditions => ["name LIKE ?",
-#     "%#{params[:search]}%"])
-
-  # def _navigate
-  #   @categories = Category.order(:name)
-  #   # @products = Product.limit(3)
-  # end
-  # def show_by_category
-  #   @category.produ
-  # end
+  def show_by_category
+    @category = Category.find(params[:id])
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -71,7 +66,4 @@ class StorefrontController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :description, :price, :stock_quantity, :image_filename, :category_id)
     end
-    # def category_params
-    #   params.require(:category).permit(:name, :description)
-    # end
 end

@@ -1,0 +1,14 @@
+header
+  == render 'shared/header'
+main#search_bar
+  == render 'shared/navigate'
+  br
+  
+  h2 Search bar
+  br
+  == form_tag search_results_path, method: 'get', class: 'form-inline' do
+  
+    == text_field_tag :search, params[:search], class: 'searchtext'
+    == submit_tag "Search", class: 'searchbutton'
+
+== render 'shared/footer' 

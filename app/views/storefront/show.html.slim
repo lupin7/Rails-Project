@@ -1,0 +1,38 @@
+header
+  == render 'shared/header' 
+main.show
+  == render 'shared/navigate' 
+
+  div
+    - if @product.image_filename.present? 
+      == image_tag @product.image_filename 
+    - else 
+        p Image unavailable
+    
+    p
+      strong Name: 
+      == @product.name 
+
+    p
+      strong Description: 
+      == @product.description.split("\n").map {|desc|"#{desc}"}.join("\n\n")
+    
+    p
+      strong Price: 
+      == number_to_currency(@product.price) 
+
+    p
+      strong Stock quantity: 
+      == @product.stock_quantity 
+    
+    /= form_for([@post, @post.comments.build]) do |f|
+      div.field
+        = f.text_field :quantity
+      div.actions
+        = f.submit
+    
+    br
+
+  == link_to 'Back to Storefront', root_path 
+
+== render 'shared/footer' 

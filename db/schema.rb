@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117181630) do
+ActiveRecord::Schema.define(version: 20141119063601) do
 
   create_table "accounts", force: true do |t|
     t.string   "first_name"
@@ -65,6 +65,21 @@ ActiveRecord::Schema.define(version: 20141117181630) do
     t.integer  "category_id"
   end
 
+  create_table "customers", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "postal_code"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "province_id"
+    t.integer  "province_id_id"
+  end
+
+  add_index "customers", ["province_id_id"], name: "index_customers_on_province_id_id"
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -74,6 +89,17 @@ ActiveRecord::Schema.define(version: 20141117181630) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
+    t.string   "image"
+  end
+
+  create_table "provinces", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.float    "pst"
+    t.float    "gst"
+    t.float    "hst"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

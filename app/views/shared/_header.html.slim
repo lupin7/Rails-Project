@@ -1,0 +1,13 @@
+div#navigation
+  nav
+    ul
+      li == link_to 'Storefront', root_path
+      li == link_to 'All Products', show_all_path
+      li == link_to 'Admin Dashboard', admin_root_path
+div#header
+  img src="http://blog.flamingtext.com/blog/2014/11/18/flamingtext_com_1416345670_647351732.gif" alt="Refreshed Refurbs"
+
+  p.search_link
+    == link_to 'Search', search_path
+    |  -  
+    == link_to 'Search by Category', search_by_category_path

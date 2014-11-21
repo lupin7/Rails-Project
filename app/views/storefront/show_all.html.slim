@@ -1,0 +1,10 @@
+header
+  == render 'shared/header' 
+main
+  == render 'shared/navigate' 
+
+  == render partial: 'products/product',
+              collection: @products  
+  == paginate @products 	
+
+== render 'shared/footer'  

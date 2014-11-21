@@ -1,0 +1,16 @@
+header 
+  == render 'shared/header'
+main
+  == render 'shared/navigate'
+  br
+
+  h2 Search Results for #{params[:search]}
+  br
+
+  - if @found_products.empty?
+    p No Results Found
+  - else
+    == render partial: 'products/product',
+			  collection: @found_products
+
+== render 'shared/footer'

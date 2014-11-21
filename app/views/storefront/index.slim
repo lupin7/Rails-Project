@@ -1,0 +1,15 @@
+header
+  == render 'shared/header' 
+main
+  == render 'shared/navigate'
+
+  - @categories.each do |category| 
+    - unless category.products.count.zero? 
+	
+	  section.sectioned_category
+        h2 == category.name 
+	
+		== render partial: 'products/product', 
+		          collection: category.products
+		
+== render 'shared/footer' 

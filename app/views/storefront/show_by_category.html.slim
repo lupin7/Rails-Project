@@ -1,0 +1,36 @@
+header
+  == render 'shared/header' 
+main.categorized
+  == render 'shared/navigate'
+  
+  br
+
+  h2
+    == @category.name 
+  
+  br
+
+  - if @category.products.count.zero?
+    h3 No products yet
+  - else
+    - @category.products.each do |product|
+      div
+        - if product.image_filename.present?
+          == image_tag product.image_filename
+        - else
+          p Image unavailable
+        h4
+          == link_to product.name, show_path(product)
+        p
+          == product.description.split("\n\n").map {|desc|"#{desc}"}.join("\n\n")
+        p
+          strong Price: 
+          == number_to_currency(product.price)
+        
+        p
+          strong Stock quantity: 
+          == product.stock_quantity
+
+  == link_to 'Back to Storefront', root_path
+
+== render 'shared/footer'

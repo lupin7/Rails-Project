@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :provinces
+
+  resources :customers
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -15,19 +19,21 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root to: 'storefront#index'
 
-  get '/storefront/:id' => 'storefront#show', as: 'show'
+  get 'storefront/:id' => 'storefront#show', as: 'show'
   get 'all' => 'storefront#show_all', as: 'show_all'
 
   get 'search' => 'storefront#search', as: 'search'
   get 'search_results' => 'storefront#search_results', as: 'search_results'
+  get 'search_by_category' => 'storefront#search_by_category', as: 'search_by_category'
+  get 'search_results_by_category' => 'storefront#search_results_by_category', as: 'search_results_by_category'
 
-  get '/storefront/categorized/:id' => 'storefront#show_by_category', as: 'show_by_category'
+  get 'categorized/:id' => 'storefront#show_by_category', as: 'show_by_category'
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
-  get '/about' => 'about#index', as: 'about'
-  get '/about/contact' => 'about#contact', as: 'contact'
+  get 'about' => 'about#index', as: 'about'
+  get 'contact' => 'about#contact', as: 'contact'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
