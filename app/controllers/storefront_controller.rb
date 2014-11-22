@@ -32,11 +32,10 @@ class StorefrontController < ApplicationController
   end  
 
   def search_results_by_category
-    # category = '%' + params[:category_chosen] + '%'
     category = params[:category_chosen]
     search = '%' + params[:search] + "%"
     @found_products = Product.where("category_id=#{category} AND
-                                     name LIKE ? OR description LIKE ?",
+                                     (name LIKE ? OR description LIKE ?)",
                                      search, search)
   end
 
