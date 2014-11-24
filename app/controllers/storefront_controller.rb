@@ -16,9 +16,6 @@ class StorefrontController < ApplicationController
   end
 
   def search      
-    # @items = Product.find(:all,
-    # :conditions => ["name LIKE ?",
-    # "%#{params[:search]}%"])
   end  
 
   def search_results    
@@ -41,6 +38,12 @@ class StorefrontController < ApplicationController
 
   def show_by_category
     @category = Category.find(params[:id])
+  end
+
+  def about
+  end
+
+  def contact
   end
 
   private
