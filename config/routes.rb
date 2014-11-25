@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get 'storefront/:id' => 'storefront#show', as: 'show'
   get 'all' => 'storefront#show_all', as: 'show_all'
+  get 'featured_products' => 'storefront#featured_products', as: 'featured_products'
 
   get 'search' => 'storefront#search', as: 'search'
   get 'search_results' => 'storefront#search_results', as: 'search_results'

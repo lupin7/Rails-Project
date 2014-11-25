@@ -1,5 +1,6 @@
 div#navigate
   nav
     ul
+      li == link_to 'Featured', featured_products_path
       - @categorize.each do |category|
         li == link_to category.name, show_by_category_path(category)
