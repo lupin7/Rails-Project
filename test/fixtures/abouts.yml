@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  about_title: MyString
+  about_text: MyText
+  goal_title: MyString
+  goal_text: MyText
+
+two:
+  about_title: MyString
+  about_text: MyText
+  goal_title: MyString
+  goal_text: MyText

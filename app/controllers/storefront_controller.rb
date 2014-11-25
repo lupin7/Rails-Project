@@ -41,9 +41,11 @@ class StorefrontController < ApplicationController
   end
 
   def about
+    @about = About.first
   end
 
   def contact
+    @about = About.first
   end
 
   private

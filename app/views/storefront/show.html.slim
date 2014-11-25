@@ -25,6 +25,10 @@ main.show
       strong Stock quantity: 
       == @product.stock_quantity 
     
+    = form_tag 'add_lineitem_path', method: :post do
+      == text_field_tag(:item_add)
+      == submit_tag("Add To Cart")
+    
     /= form_for([@post, @post.comments.build]) do |f|
       div.field
         = f.text_field :quantity
