@@ -1,6 +1,6 @@
-div#navigate
+div[class="navbar navbar-inverse"]
   nav
-    ul
-      li == link_to 'Featured', featured_products_path
+    ul[class="nav nav-pills nav-justified"]
+      li[class="active"] == link_to 'Featured', featured_products_path
       - @categorize.each do |category|
-        li == link_to category.name, show_by_category_path(category)
+        li[role="presentation"] == link_to category.name, show_by_category_path(category)

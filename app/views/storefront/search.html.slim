@@ -6,9 +6,10 @@ main#search_bar
   
   h2 Search bar
   br
-  == form_tag search_results_path, method: 'get', class: 'form-inline' do
   
-    == text_field_tag :search, params[:search], class: 'searchtext'
-    == submit_tag "Search", class: 'searchbutton'
+  == form_tag search_results_path, method: 'get', class: "navbar-form navbar-left", role: "search" do
+    div.form-group
+      == text_field_tag :search, params[:search], class: "form-control"
+      == submit_tag "Search", class: "btn btn-default"
 
 == render 'shared/footer' 

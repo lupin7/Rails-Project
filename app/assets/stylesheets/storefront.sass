@@ -12,6 +12,10 @@ $shadow: #292929
 	//background: url('assets/background-green.jpg')
 	//background: $dark_green
 
+.btn-default
+	width: 85px
+select.btn-default
+	width: 120px
 
 main 
 	width: 900px
@@ -20,7 +24,12 @@ main
 	border: 1px solid black
 	border-radius: 5px
 	box-shadow: 0px 0px 30px $shadow
+	//padding-bottom: 900px
 	//background: blue
+
+	h3
+		font-size: 1.1em
+		font-weight: bold
 
 
 main.show 
@@ -35,15 +44,14 @@ main.show
 	
 
 
-main#search_bar
-	input.searchbutton 
-		width: 60px
+main#search_bar, main#search_by_category
+	padding-bottom: 80px
 
-main#search_by_category
-	input.searchbutton 
-		width: 60px
-	select#category_chosen
-		width: 110px
+// main#search_by_category
+// 	input.searchbutton 
+// 		width: 60px
+// 	select#category_chosen
+// 		width: 110px
 
 main.categorized
 	img
@@ -62,9 +70,14 @@ section.sectioned_category
 	margin: 5px
 	margin-top: 20px
 
+	//h3
+	//	font-size: 1.1em
+	//	font-weight: bold
+
+
 
 div.product_front 
-	width: 250px
+	width: 260px
 	//height: 300px
 	margin: 5px
 	display: inline-block
@@ -121,11 +134,12 @@ header
 		
 	#navigation
 		//background: $light_color
-		width: 99.7%
+		//width: 99.7%
 		//background: #FFFFBB
-		color: #000
-		border: 2px black solid
-		height: 18px
+		//color: #000
+		//border: 2px black solid
+		//height: 30px
+		margin-bottom: 40px
 	
 	nav
 		width: 100%
@@ -152,12 +166,12 @@ header
 
 #navigate
 	//background: $light_color
-	width: 895px
-	//background: #FFFFBB
-	color: #000
-	border: 1px black solid
-	border-radius: 5px
-	height: 18px
+	// width: 895px
+	 //background: #FFFFBB
+	// color: #000
+	// border: 1px black solid
+	// border-radius: 5px
+	// height: 18px
 
 	nav
 		width: 100%

@@ -7,9 +7,9 @@ main#search_by_category
   h2 Search by Category
   br
 
-  == form_tag search_results_by_category_path, :method => 'get', :class => 'form-inline' do
-    == select_tag 'category_chosen', options_for_select(Category.all.collect {|c| [c.name, c.id] } )
-    == text_field_tag :search, params[:search], :class => 'searchtext'
-    == submit_tag "Search", :class => 'searchbutton'
+  == form_tag search_results_by_category_path, :method => 'get', class: "navbar-form navbar-left", role: "search" do
+    == select_tag 'category_chosen', options_for_select(Category.all.collect {|c| [c.name, c.id] } ), class: "btn btn-default btn-sm dropdown-toggle"
+    == text_field_tag :search, params[:search], class: "form-control"
+    == submit_tag "Search", :class => "btn btn-default"
 
 == render 'shared/footer'
