@@ -5,7 +5,7 @@
 $fonts: Calibri
 $dark_green: #006300
 $light_color: #33CC33
-$shadow: #292929
+$shadow: #005300
 
 * 
 	margin: 0px
@@ -23,14 +23,22 @@ main
 	padding: 10px
 	border: 1px solid black
 	border-radius: 5px
-	box-shadow: 0px 0px 30px $shadow
+	box-shadow: 0px 0px 50px $shadow
 	//padding-bottom: 900px
-	//background: blue
+	background: white
 
 	h3
 		font-size: 1.1em
 		font-weight: bold
-
+    
+	.line_through
+		text-decoration: line-through
+	.sale_now
+		color: red
+	.sale_now_float
+		color: red
+		float: right
+		margin-right: -200px
 
 main.show 
 	div 
@@ -105,23 +113,36 @@ div.product_front
 		height: 100px
 		//border-radius: 5px
 	
+pro	
 
 header 
 	div#header 
 		border: 2px dotted black
-		border-radius: 4px
+		border-radius: 7px
 		padding: 7px
 		width: 900px
 		margin: 5px auto
 		background: black
-		box-shadow: 0px 0px 30px $shadow
-
+		box-shadow: 0px 0px 50px $shadow
+		
 		p.search_link 
 			margin-top: 5px
 			position: relative
 			//display: block
 			float: right
 			top: 90px
+		.link_search
+			transition: font 0.7s ease
+			transition: color 0.7s ease
+			-webkit-transition: all 0.7s ease
+			-moz-transition: all 0.7s ease
+			-o-transition: all 0.7s ease
+			-ms-transition: all 0.7s ease
+		.link_search:hover 
+			font-size: 1.1em
+			color: white
+			text-shadow: 0px 0px 50px green
+			text-decoration: none
 			
 			a 
 				font-size: 1.1em
@@ -208,6 +229,7 @@ footer
 	border: 1px solid black
 	border-radius: 5px
 	box-shadow: 0px 0px 30px $shadow
+	background: white
 
 .about 
 	h2
@@ -223,3 +245,4 @@ footer
 		text-indent: 20px
 		text-align: justify
 		margin: 5px 30px
+
