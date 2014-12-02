@@ -49,6 +49,11 @@ class StorefrontController < ApplicationController
   end
 
   def featured_products
+    @on_sale = Product.where('sale_price NOT NULL').limit(1).page(params[:page]).per(1)
+    @new_products = Product.order(:created_at).limit(2) # .page(params[:page]).per(1)
+  end
+
+  def add_lineitem
   end
 
   private
