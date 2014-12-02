@@ -1,0 +1,38 @@
+header
+  == render 'shared/header' 
+main
+  == render 'shared/navigate'
+  
+  br
+  h3 What's New
+  - @on_sale.each do |sale|
+    div.product_front
+      h3.sale_now_float Sale!
+      - if sale.image_filename.present?
+        == image_tag sale.image_filename
+      - else
+        p Image unavailable
+      h3
+        == link_to sale.name, show_path(sale)
+      p
+        == sale.description.truncate(100)
+
+      p.line_through
+        strong Original Price: 
+        == number_to_currency(sale.price)
+
+      p.sale_now
+        strong Sale Price: 
+        == number_to_currency(sale.sale_price)
+
+      p
+        strong Stock quantity: 
+        == sale.stock_quantity
+  
+  == render partial: 'products/product',
+              collection: @new_products  
+
+  br
+  == link_to 'Back to Storefront', root_path
+
+== render 'shared/footer'
