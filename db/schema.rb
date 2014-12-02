@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125010211) do
+ActiveRecord::Schema.define(version: 20141201183955) do
 
   create_table "abouts", force: true do |t|
     t.string   "about_title"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20141125010211) do
     t.datetime "updated_at"
     t.integer  "category_id"
     t.string   "image"
+    t.decimal  "sale_price"
   end
 
   create_table "provinces", force: true do |t|
