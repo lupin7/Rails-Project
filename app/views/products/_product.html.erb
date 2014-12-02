@@ -1,5 +1,7 @@
 <div class="product_front">
-  
+  <% if !product.sale_price.nil? %>
+    <h3 class="sale_now_float"> Sale! <h3>
+  <% end %>
   <% if product.image_filename.present? %>
     <%= image_tag product.image_filename %>
   <% end %>
@@ -20,10 +22,21 @@
     </small>
   <% end %>
   
-  <p class="price">
-    <strong>Price:</strong>
-    $<%= product.price %>
-  </p>
+  <% if product.sale_price.nil? %>
+    <p class="price">
+      <strong>Price: </strong>
+      $<%= product.price %>
+    </p>
+  <% else %>
+    <p class="line_through">
+      <strong>Original Price: </strong>
+      $<%= product.price %>
+    </p>
+    <p class="sale_now">
+      <strong>Sale Price: </strong>
+      $<%= product.sale_price %>
+    </p>
+  <% end %>
 
   <!-- <input type="text" id="quantity" name="quantity" />  -->
   <!-- <button type="button">Buy</button> -->

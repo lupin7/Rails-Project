@@ -17,9 +17,17 @@ main
       strong Description: 
       == @product.description.split("\n").map {|desc|"#{desc}"}.join("\n\n")
     
-    p
-      strong Price: 
-      == number_to_currency(@product.price) 
+      - if @product.sale_price.nil?
+        p
+          strong Price: 
+          == number_to_currency(@product.price)
+      - else
+        p.line_through
+          strong Original Price: 
+          == number_to_currency(@product.price)
+        p.sale_now
+          strong Sale Price: 
+          == number_to_currency(@product.sale_price)
 
     p
       strong Stock quantity: 
