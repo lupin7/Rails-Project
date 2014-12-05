@@ -27,7 +27,7 @@ main
         p
           strong Total: 
           == number_to_currency(total)
-          == button_to 'Checkout', root_path, :class => 'checkout'
+          == button_to 'Checkout', root_path, :class => 'btn btn-default'
           == hidden_field_tag 'total', total
 
 == render 'shared/footer' 
