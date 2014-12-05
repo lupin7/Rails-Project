@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :line_items
+
+  resources :orders
+
   resources :provinces
 
   resources :customers
@@ -36,6 +40,8 @@ Rails.application.routes.draw do
   get 'about' => 'storefront#about', as: 'about'
   get 'contact' => 'storefront#contact', as: 'contact'
 
+  get 'add_lineitem' => 'storefront#add_lineitem', as: 'add_lineitem'
+  get 'show_cart' => 'storefront#show_cart', as: 'show_cart'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
