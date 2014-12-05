@@ -1,0 +1,33 @@
+header
+  == render 'shared/header' 
+main
+  == render 'shared/navigate'
+  - total = 0
+  - @orders.each do |order| 
+    - unless order.line_items.count.zero? 
+	
+	  section
+        /h2 == order.id
+        h2 Current Cart: 
+        - order.line_items.each do |prod|
+          div.cart_contents
+            p == image_tag prod.product.image_filename, :class => 'pic'
+	        
+            p == prod.product.name
+
+            p 
+              strong Price: 
+              == number_to_currency(prod.product.price)
+
+            p 
+              strong Qty: 
+              == prod.quantity
+            
+            - total += prod.price
+        p
+          strong Total: 
+          == number_to_currency(total)
+          == button_to 'Checkout', root_path, :class => 'checkout'
+          == hidden_field_tag 'total', total
+
+== render 'shared/footer' 
