@@ -2,7 +2,9 @@ class StorefrontController < ApplicationController
   before_action :set_product, only: [:show]
   # before_action :set_category
   before_action :set_all_categories
-  before_action :set_all_products  
+  before_action :set_all_products
+  before_action :set_all_orders
+  before_action :set_all_lineitems
 
   def index
   	@categories = Category.order(:name).limit(3)
@@ -49,11 +51,14 @@ class StorefrontController < ApplicationController
   end
 
   def featured_products
-    @on_sale = Product.where('sale_price NOT NULL').limit(1).page(params[:page]).per(1)
+    @on_sale = Product.where('sale_price NOT NULL').limit(1) # .page(params[:page]).per(1)
     @new_products = Product.order(:created_at).limit(2) # .page(params[:page]).per(1)
   end
 
   def add_lineitem
+  end
+  
+  def show_cart
   end
 
   private
@@ -72,6 +77,14 @@ class StorefrontController < ApplicationController
 
     def set_all_products
       @products = Product.all
+    end
+
+    def set_all_orders
+      @orders = Order.all
+    end
+
+    def set_all_lineitems
+      @line_items = LineItem.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
