@@ -14,11 +14,16 @@ ActiveAdmin.register Order do
   #   permitted
   # end
 
-  permit_params :customer_id
+  permit_params :customer_id, :status, :pst_rate, :gst_rate, :hst_rate, :total
 
   form do |f|
     f.inputs "Details" do
       f.input :customer
+      f.input :status
+      f.input :pst_rate
+      f.input :gst_rate
+      f.input :hst_rate
+      f.input :total
     end
     f.actions
   end
