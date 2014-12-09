@@ -6,7 +6,8 @@ class OrdersController < InheritedResources::Base
   private
 
     def order_params
-      params.require(:order).permit()
+      params.require(:order).permit(:customer, :status, :pst_rate, :gst_rate, :hst_rate, :total)
+      # params.require(:order).permit(:customer_id, :status)
     end
 
   # def add_to_cart

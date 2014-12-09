@@ -4,7 +4,10 @@ class StorefrontController < ApplicationController
   before_action :set_all_categories
   before_action :set_all_products
   before_action :set_all_orders
+  before_action :set_order
   before_action :set_all_lineitems
+  # before_action :set_all_customers
+  before_action :set_customer
 
   def index
   	@categories = Category.order(:name).limit(3)
@@ -61,6 +64,12 @@ class StorefrontController < ApplicationController
   def show_cart
   end
 
+  def customer_info
+  end
+
+  def checkout
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -83,8 +92,24 @@ class StorefrontController < ApplicationController
       @orders = Order.all
     end
 
+    def set_order
+      if session[:order_id]
+        @order = Order.find(session[:order_id])
+      end
+    end
+
     def set_all_lineitems
       @line_items = LineItem.all
+    end
+    
+    # def set_all_customers
+    #   @customers = Customer.all
+    # end
+
+    def set_customer
+      if session[:customer_now]
+        @customer = Customer.find(session[:customer_now])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

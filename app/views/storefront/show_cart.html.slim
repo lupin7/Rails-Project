@@ -3,31 +3,35 @@ header
 main
   == render 'shared/navigate'
   - total = 0
-  - @orders.each do |order| 
-    - unless order.line_items.count.zero? 
-	
-	  section
-        /h2 == order.id
-        h2 Current Cart: 
-        - order.line_items.each do |prod|
-          div.cart_contents
-            p == image_tag prod.product.image_filename, :class => 'pic'
-	        
-            p == prod.product.name
+  
+  section
+      /h2 == order.id
+      h2 Current Cart: 
+      - @order.line_items.each do |prod|
+        div.cart_contents
+          p == image_tag prod.product.image_filename, :class => 'pic'
+        
+          p == prod.product.name
 
-            p 
-              strong Price: 
-              == number_to_currency(prod.product.price)
+          p 
+            strong Price: 
+            == number_to_currency(prod.product.price)
 
-            p 
-              strong Qty: 
-              == prod.quantity
-            
-            - total += prod.price
-        p
-          strong Total: 
-          == number_to_currency(total)
-          == button_to 'Checkout', root_path, :class => 'btn btn-default'
-          == hidden_field_tag 'total', total
+          p 
+            strong Qty: 
+            == prod.quantity
+          
+          - total += prod.price
+      
+      - @order.total = total
+
+      p.inline
+        strong Total: 
+        == number_to_currency(@order.total)
+        == hidden_field_tag 'total', total
+      
+      p.inline
+        strong 
+          == link_to "Proceed to Checkout", new_customer_path
 
 == render 'shared/footer' 

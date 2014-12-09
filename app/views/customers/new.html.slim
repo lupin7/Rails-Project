@@ -1,0 +1,14 @@
+header
+  == render 'shared/header' 
+main
+  == render 'shared/navigate' 
+  
+  h2 Please fill out Details:
+
+  == render 'form'
+  
+  br
+  
+  == link_to 'Back to Storefront', root_path 
+
+== render 'shared/footer' 

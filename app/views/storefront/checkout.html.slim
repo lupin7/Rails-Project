@@ -1,0 +1,43 @@
+header
+  == render 'shared/header' 
+main
+  == render 'shared/navigate'
+  
+  h3 Details:
+  
+  p
+    strong Name: 
+    == @customer.first_name + " " + @customer.last_name
+
+  p
+    strong Address: 
+    == @customer.address + " " + @customer.city + ", " + @customer.province.name + " " + @customer.postal_code
+
+  - if @customer.email.nil?
+    p No email
+  - else
+    p 
+      strong Email: 
+      == @customer.email
+  
+  - @order.customer_id = @customer.id
+  - @order.status = "new"
+  - @order.pst_rate = @customer.province.pst
+  - @order.gst_rate = @customer.province.gst
+  - @order.hst_rate = @customer.province.hst
+  p
+    strong Total Price: 
+    == @order.total
+
+  p 
+    strong Customer: 
+    == @order.customer_id
+
+  == link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), :controller => 'paypal_express', :action => 'checkout'
+  
+  br
+  == link_to 'Back to Cart', show_cart_path
+  br
+  == link_to 'Back to Storefront', root_path
+
+== render 'shared/footer' 
