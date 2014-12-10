@@ -1,0 +1,47 @@
+# This is the configuration used to check the rubocop source code.
+AllCops:
+  Exclude:
+    - db/**
+    - bin/**
+    - config/**
+    - bin/**
+    - test/**
+
+Documentation:
+  Enabled: false
+
+MethodLength:
+  Enabled: false
+
+LineLength:
+  Enabled: false
+
+Encoding:
+  Enabled: false
+
+IndentationConsistency:
+  Enabled: false
+
+CommentAnnotation:
+  Enabled: false
+
+CommentIndentation:
+  Enabled: false
+
+TrailingWhitespace:
+  Enabled: false
+
+TrailingBlankLines:
+  Enabled: false
+
+BracesAroundHashParameters:
+  Enabled: false
+
+AbcSize:
+  Enabled: false
+
+IfUnlessModifier:
+  Enabled: false
+
+GuardClause:
+  Enabled: false
