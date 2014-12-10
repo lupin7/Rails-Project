@@ -10,7 +10,7 @@ class StorefrontController < ApplicationController
   before_action :set_customer
 
   def index
-  	@categories = Category.order(:name).limit(3)
+    @categories = Category.order(:name).limit(3)
   end
 
   def show
@@ -24,9 +24,8 @@ class StorefrontController < ApplicationController
   end  
 
   def search_results    
-    search = '%' + params[:search] + "%"
-    @found_products = Product.where("name LIKE ? OR description LIKE ?",
-                                     search, search)
+    search = '%' + params[:search] + '%'
+    @found_products = Product.where('name LIKE ? OR description LIKE ?', search, search)
     # @found_products = Product.search_for(params[:search])
   end
 
@@ -35,10 +34,8 @@ class StorefrontController < ApplicationController
 
   def search_results_by_category
     category = params[:category_chosen]
-    search = '%' + params[:search] + "%"
-    @found_products = Product.where("category_id=#{category} AND
-                                     (name LIKE ? OR description LIKE ?)",
-                                     search, search)
+    search = '%' + params[:search] + '%'
+    @found_products = Product.where("category_id=#{category} AND (name LIKE ? OR description LIKE ?)", search, search)
   end
 
   def show_by_category
@@ -71,6 +68,7 @@ class StorefrontController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])

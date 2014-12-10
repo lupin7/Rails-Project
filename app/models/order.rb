@@ -10,21 +10,20 @@ class Order < ActiveRecord::Base
 
   def paypal_url(return_url)
     values = {
-      :business => 'marc_mce_2004-facilitator_api1.yahoo.com',
-      :cmd => '_order',
-      :upload => 1,
-      :return => return_url,
-      :invoice => id
+      business: 'marc_mce_2004-facilitator@yahoo.com',
+      cmd: '_cart',
+      upload: 1,
+      return: return_url,
+      invoice: id
     }
     line_items.each_with_index do |item, index|
-      values.merge!({
-        "amount_#{index+1}" => item.price,
-        "item_name_#{index+1}" => item.product.name,
-        "item_number_#{index+1}" => item.id,
-        "quantity_#{index+1}" => item.quantity
-      })
+      values.merge!({  "amount_#{index + 1}" => item.price,
+                       "item_name_#{index + 1}" => item.product.name,
+                       "item_number_#{index + 1}" => item.id,
+                       "quantity_#{index + 1}" => item.quantity
+                    })
     end    
-    "https://www.sandbox.paypal.com/cgi-bin/webscr?"+values.map {|k,v| "#{k}=#{v}"}.join("&")
+    'https://www.sandbox.paypal.com/cgi-bin/webscr?' + values.map { |k, v| "#{k}=#{v}" }.join('&')
   end
 end
   # def express_token=(token)

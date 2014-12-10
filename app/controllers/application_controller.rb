@@ -15,9 +15,10 @@ class ApplicationController < ActionController::Base
   end 
 
   private
+
     def admin_authenticate
-  	  authenticate_or_request_with_http_basic do |username, password|
-  	    username == 'admin' && password == 'secret'
-  	  end
+      authenticate_or_request_with_http_basic do |username, password|
+        username == 'admin' && password == 'secret'
+      end
     end
 end
