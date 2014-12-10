@@ -20,21 +20,36 @@ main
       strong Email: 
       == @customer.email
   
-  - @order.customer_id = @customer.id
-  - @order.status = "new"
-  - @order.pst_rate = @customer.province.pst
-  - @order.gst_rate = @customer.province.gst
-  - @order.hst_rate = @customer.province.hst
-  p
-    strong Total Price: 
-    == @order.total
+  h3 Your Order: 
+  div.invoice
+    - @order.line_items.each do |prod|
+    
+      p == prod.product.name
 
-  p 
-    strong Customer: 
-    == @order.customer_id
-
-  == link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), :controller => 'paypal_express', :action => 'checkout'
+    - @order.customer_id = @customer.id
+    - @order.status = "new"
+    - @order.pst_rate = @customer.province.pst
+    - @order.gst_rate = @customer.province.gst
+    - @order.hst_rate = @customer.province.hst
+    /- @order.save
+    p
+      strong Subtotal: 
+      == number_to_currency(@order.total)
   
+    - pst = (@order.total * @order.pst_rate)
+    - gst = (@order.total * @order.gst_rate)
+    - hst = (@order.total * @order.hst_rate)
+    - final_total = @order.total + pst + gst + hst
+    - @order.total = final_total.round(2)
+    /- @order.save
+
+    p 
+      strong Total: 
+      == number_to_currency(@order.total)
+  
+  br
+  == link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), @order.paypal_url(products_url)
+
   br
   == link_to 'Back to Cart', show_cart_path
   br

@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   #
   belongs_to :category
   has_many :line_items
-  has_many :orders, :through => :line_items
+  has_many :orders, through: :line_items
 
   validates :name, :description, :price, presence: true
   validates :name, uniqueness: true
@@ -12,9 +12,10 @@ class Product < ActiveRecord::Base
   mount_uploader :image_filename, ImageUploaderUploader
 
   before_destroy :ensure_not_referenced_by_any_line_item
-#...
+
   private
-  # ensure that there are no line items referencing this product
+
+    # ensure that there are no line items referencing this product
     def ensure_not_referenced_by_any_line_item
       if line_items.empty?
         return true

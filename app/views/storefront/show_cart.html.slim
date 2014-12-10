@@ -24,7 +24,8 @@ main
           - total += prod.price
       
       - @order.total = total
-
+      - @order.save
+      
       p.inline
         strong Total: 
         == number_to_currency(@order.total)
