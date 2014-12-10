@@ -10,7 +10,7 @@ class LineItemsController < InheritedResources::Base
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to @line_item.order,
-          notice: 'Line item was successfully created.' }
+          flash[:notice] = 'Line item was successfully created.' }
         format.json { render action: 'show',
           status: :created, location: @line_item }
       else

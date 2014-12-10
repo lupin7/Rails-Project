@@ -53,3 +53,5 @@ gem 'slim-rails'
 # gem 'sass', '~> 3.4.8'
 
 gem 'rubocop', '~> 0.27.1'
+
+# gem 'activemerchant', '~> 1.45.0'
