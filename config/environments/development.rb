@@ -31,7 +31,26 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
+  
+  # config.after_initialize do
+  #   ActiveMerchant::Billing::Base.mode = :test
+  #   paypal_options = {
+  #     login: "API_USERNAME_HERE",
+  #     password: "API_PASSWORD_HERE",
+  #     signature: "API_SIGNATURE_HERE"
+  #   }
+  #   ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  # end
 
+  # config.after_initialize do
+  #   ActiveMerchant::Billing::Base.mode = :test
+  #   ::GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(
+  #       :login => "seller_1229899173_biz_apil.railscasts.com",
+  #       :password => "FXWU58S7KXFC6HBE",
+  #       :signature => "AGjv6SW.mTiKxtkm6L9DcSUCUgePAUDQ3L-kTdszkPG8mRfjaRZDYtSu"
+  #     )
+  # end
+  
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
