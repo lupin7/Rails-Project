@@ -2,7 +2,9 @@ header
   == render 'shared/header' 
 main
   == render 'shared/navigate'
-  
+  - total = 0
+  - final_total = 0
+
   h3 Details:
   
   p
@@ -25,23 +27,25 @@ main
     - @order.line_items.each do |prod|
     
       p == prod.product.name
+      
+      - total += prod.price
 
     - @order.customer_id = @customer.id
     - @order.status = "new"
     - @order.pst_rate = @customer.province.pst
     - @order.gst_rate = @customer.province.gst
     - @order.hst_rate = @customer.province.hst
-    /- @order.save
+    
     p
       strong Subtotal: 
-      == number_to_currency(@order.total)
+      == number_to_currency(total)
   
-    - pst = (@order.total * @order.pst_rate)
-    - gst = (@order.total * @order.gst_rate)
-    - hst = (@order.total * @order.hst_rate)
-    - final_total = @order.total + pst + gst + hst
-    - @order.total = final_total.round(2)
-    /- @order.save
+    - pst = (total * @order.pst_rate)
+    - gst = (total * @order.gst_rate)
+    - hst = (total * @order.hst_rate)
+    - final_total = (total + pst + gst + hst).round(2)
+    - @order.total = final_total
+    - @order.save
 
     p 
       strong Total: 
