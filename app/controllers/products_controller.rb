@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :admin_authenticate, only: [:show, :edit, :update, :destroy]
+  # before_action :admin_authenticate, only: [:show, :edit, :update, :destroy]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_categories, only: [:new, :edit]
 

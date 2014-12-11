@@ -7,7 +7,7 @@ class CustomersController < InheritedResources::Base
 
     respond_to do |format|
       if @customer.save
-        session[:customer_now] = @customer
+        session[:customer_now] = @customer.id
         format.html { redirect_to checkout_path }
         format.json { render :show, status: :created, location: @customer }
       else
