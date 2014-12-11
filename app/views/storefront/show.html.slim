@@ -2,8 +2,12 @@ header
   == render 'shared/header' 
 main
   == render 'shared/navigate' 
-
+  /- session.delete(:customer_now)
+  /- session.delete(:order_id)
   div
+    - if flash[:notice]
+      p.flash
+        == flash[:notice]
     - if @product.image_filename.present? 
       == image_tag @product.image_filename 
     - else 

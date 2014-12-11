@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   get 'checkout' => 'storefront#checkout', as: 'checkout'
   # get 'customer_info' => 'storefront#customer_info', as: 'details'
 
-  get "paypal_express/checkout"
+  # get "paypal_express/checkout"
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

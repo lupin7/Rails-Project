@@ -15,7 +15,7 @@ main
     strong Address: 
     == @customer.address + " " + @customer.city + ", " + @customer.province.name + " " + @customer.postal_code
 
-  - if @customer.email.nil?
+  - if @customer.email.blank?
     p No email
   - else
     p 
