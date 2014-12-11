@@ -35,14 +35,26 @@ main
     - @order.pst_rate = @customer.province.pst
     - @order.gst_rate = @customer.province.gst
     - @order.hst_rate = @customer.province.hst
-    
-    p
-      strong Subtotal: 
-      == number_to_currency(total)
-  
     - pst = (total * @order.pst_rate)
     - gst = (total * @order.gst_rate)
     - hst = (total * @order.hst_rate)
+
+    p
+      strong Subtotal: 
+      == number_to_currency(total)
+    - unless pst.zero?
+      p
+        strong PST: 
+        == number_to_currency(pst)
+    - unless gst.zero?
+      p
+        strong GST: 
+        == number_to_currency(gst)
+    - unless hst.zero?
+      p
+        strong HST: 
+        == number_to_currency(hst)
+    
     - final_total = (total + pst + gst + hst).round(2)
     - @order.total = final_total
     - @order.save
