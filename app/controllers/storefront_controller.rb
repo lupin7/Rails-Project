@@ -67,6 +67,12 @@ class StorefrontController < ApplicationController
   def checkout
   end
 
+  def clear_all
+    session_delete(:customer_now)
+    session_delete(:order_id)
+    redirect_to show_cart_path
+  end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.

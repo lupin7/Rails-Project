@@ -1,0 +1,13 @@
+- customers = Customer.includes(:orders).where(orders: { status: 'new' })
+
+- customers.each do |customer|
+  - customer.orders.each do |order|
+    h4 
+      == customer.first_name + ' ' + customer.last_name
+    h5
+      == customer.address + ' | ' + customer.city + ', ' + customer.province.code + ' ' + customer.postal_code
+    
+    ul
+      - order.line_items.each do |item|
+        li 
+          == item.product.name

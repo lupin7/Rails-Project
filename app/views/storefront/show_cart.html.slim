@@ -38,9 +38,13 @@ main
             strong 
               == link_to "Proceed to Checkout", new_customer_path
         - else
-          p.inline
+          p
             strong 
               == link_to "Proceed to Checkout", checkout_path
+          p  
+            strong  
+              == link_to 'Clear Cart', clear_path
+
   - else
 
     section
